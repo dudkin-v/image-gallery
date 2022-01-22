@@ -2,12 +2,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #81715E;
+  background-color: #E4EA8C;
   width: 800px;
   height: 100vh;
 }
 
 .app-heading {
   padding-top: 30px;
-  color: #FAAE3D;
+  color: #3F6C45;
+}
+
+.showMore-btn {
+  margin-top: 30px;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: white;
+  background-color:#3F6C45;
+  border: 1px solid white;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.showMore-btn:hover {
+  background-color:#CB0000;
+  transition: 0.25s;
 }
