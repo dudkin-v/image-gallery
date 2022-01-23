@@ -5,18 +5,6 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import './ImageList.styles.css';
 
 const ImageList = ({ data }) => {
-
-
-    class CostomString {
-        rev(str){
-            return str.split("").reverse().join("");
-        }
-    }
-
-    const one = new CostomString();
-    console.log(one.rev("eno"))
-
-  
     return (
         <div className='images-container'>
             {data.map((image) => 
