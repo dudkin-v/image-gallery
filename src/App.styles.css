@@ -11,8 +11,9 @@
   color: #3F6C45;
 }
 
-.showMore-btn {
+.show-more-btn {
   padding: 5px 10px;
+  margin-bottom: 30px;
   font-size: 16px;
   color: white;
   background-color:#3F6C45;
@@ -22,7 +23,7 @@
   transition: 0.25s;
 }
 
-.showMore-btn:hover {
+.show-more-btn:hover {
   background-color:#CB0000;
   transition: 0.25s;
 }

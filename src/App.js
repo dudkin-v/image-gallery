@@ -5,23 +5,22 @@ import { ImageList } from './components/ImageList';
 import './App.styles.css';
 
 const App = () => {
-const [limit, setLimit] = useState(10);
+const [page, setPage] = useState(1);
 const [images, setImages] = useState([]);
-console.log(images)
 
 useEffect(async () => {
-    const response = await fetch(`https://picsum.photos/v2/list?limit=${limit}`);
+    const response = await fetch(`https://picsum.photos/v2/list?page=${page}&limit=10`);
     const data = await response.json();
-    setImages(data);
-}, [limit]);
+    setImages([...images, ...data]);
+}, [page]);
 
-const showMore = () => setLimit(limit + 10);
+const showMore = () => setPage(page + 1);
 
   return (
     <div className="app">
       <h1 className='app-heading'>Images gallery</h1>
       <ImageList data={images} />
-      <button className='showMore-btn' onClick={showMore}>Show more...</button>
+      <button className='show-more-btn' onClick={showMore}>Show more</button>
     </div>
   );
 }
