@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import './ImageList.styles.css';
 
 const ImageList = ({ data }) => {
@@ -11,6 +13,13 @@ const ImageList = ({ data }) => {
             )}
         </div>
     )
+}
+
+ImageList.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        url: PropTypes.string.isRequired
+    })).isRequired
 }
 
 export default ImageList;
