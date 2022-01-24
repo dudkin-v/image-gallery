@@ -53,6 +53,5 @@ h2 {
 
 .popup-close-btn:hover {
     color: #CB0000;
-    border-radius: 50%;
     transition: 0.5s;
 }

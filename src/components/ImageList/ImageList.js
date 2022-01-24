@@ -4,16 +4,20 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './ImageList.styles.css';
 
-const ImageList = ({ data, showPopup }) => {
+const ImageList = ({ data, onClick }) => {
     return (
         <div className='images-container'>
-            {data.map((image) => 
+            {data.map((image, index) => 
             <div className='image-card' key={image.id}>
-                <LazyLoadImage
-                onClick={showPopup(image.id)}
-                effect="blur"
-                src={`https://picsum.photos/id/${image.id}/300/200`}
-                />
+                   <LazyLoadImage
+                   className='image'
+                   onClick={onClick(image.id)}
+                   effect="blur"
+                   src={`https://picsum.photos/id/${image.id}/300/200`}
+                   role='button'
+                   aria-pressed='false'
+                   tabIndex={index + 1}
+                   />
             </div>
             )}
         </div>
@@ -25,7 +29,7 @@ ImageList.propTypes = {
         id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
         url: PropTypes.string.isRequired
     })).isRequired,
-    showPopup: PropTypes.func.isRequired
+    onCkick: PropTypes.func.isRequired
 }
 
 export default ImageList;
