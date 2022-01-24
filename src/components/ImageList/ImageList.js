@@ -14,6 +14,7 @@ const ImageList = ({ data, onClick }) => {
                    onClick={onClick(image.id)}
                    effect="blur"
                    src={`https://picsum.photos/id/${image.id}/300/200`}
+                   alt={`Photo, copy url for view in full size ${image.download_url}`}
                    role='button'
                    aria-pressed='false'
                    tabIndex={index + 1}
@@ -29,7 +30,7 @@ ImageList.propTypes = {
         id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
         url: PropTypes.string.isRequired
     })).isRequired,
-    onCkick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired
 }
 
 export default ImageList;
