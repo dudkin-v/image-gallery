@@ -1,0 +1,35 @@
+.popup-wrapper-active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+}
+
+.popup-hiden {
+    display: none;
+}
+
+.popup-active {
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 250px;
+    padding: 20px;
+    background-color: #3F6C45;
+    border: 2px solid white;
+    border-radius: 15px;
+}
+
+h2 {
+    padding: 5px;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+}
