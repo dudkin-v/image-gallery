@@ -14,7 +14,7 @@ const [popupOpen, setPopupOpen] = useState(false);
 const fetchData = useCallback(async () => {
   const response = await fetch(`https://picsum.photos/v2/list?page=${page}&limit=10`);
     const data = await response.json();
-    setImages([...images, ...data]);
+    setImages((prevImages) => [...prevImages, ...data]);
 }, [page]);
 
 useEffect(() => {
