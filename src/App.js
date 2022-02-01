@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { ImageList } from './components/ImageList';
 import { Popup } from './components/Popup';
@@ -11,11 +11,15 @@ const [images, setImages] = useState([]);
 const [popupData, setPopupData] = useState({author: '', height: '',  width: ''});
 const [popupOpen, setPopupOpen] = useState(false);
 
-useEffect(async () => {
-    const response = await fetch(`https://picsum.photos/v2/list?page=${page}&limit=10`);
+const fetchData = useCallback(async () => {
+  const response = await fetch(`https://picsum.photos/v2/list?page=${page}&limit=10`);
     const data = await response.json();
     setImages([...images, ...data]);
 }, [page]);
+
+useEffect(() => {
+  fetchData();
+}, [fetchData]);
 
 const showMore = () => setPage(page + 1);
 
