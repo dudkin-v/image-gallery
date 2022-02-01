@@ -9,16 +9,18 @@ const ImageList = ({ data, onClick }) => {
         <div className='images-container'>
             {data.map((image, index) => 
             <div className='image-card' key={image.id}>
-                   <LazyLoadImage
-                   className='image'
+                <div className='image-wrapper'
                    onClick={onClick(image.id)}
-                   effect="blur"
-                   src={`https://picsum.photos/id/${image.id}/300/200`}
-                   alt={`Photo, copy url for view in full size ${image.download_url}`}
                    role='button'
                    aria-pressed='false'
-                   tabIndex={index + 1}
-                   />
+                   tabIndex={index + 1}>
+                      <LazyLoadImage
+                         className='image'
+                         effect="blur"
+                         src={`https://picsum.photos/id/${image.id}/300/200`}
+                         alt={`Photo, copy url for view in full size ${image.download_url}`}
+                      />
+                </div>
             </div>
             )}
         </div>
