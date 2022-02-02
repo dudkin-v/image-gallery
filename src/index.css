@@ -3,7 +3,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   display: flex;
   flex-direction: column;
   align-items: center;
