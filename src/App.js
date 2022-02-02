@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect, useCallback } from "react";
 
-function App() {
+import { ImageList } from "./components/ImageList";
+import { Popup } from "./components/Popup";
+
+import "./App.styles.css";
+
+const App = () => {
+  const [page, setPage] = useState(1);
+  const [images, setImages] = useState([]);
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [popupData, setPopupData] = useState({
+    author: "",
+    height: "",
+    width: "",
+  });
+  const fetchData = useCallback(async () => {
+    const response = await fetch(
+      `https://picsum.photos/v2/list?page=${page}&limit=10`
+    );
+    const data = await response.json();
+    setImages((prevImages) => [...prevImages, ...data]);
+  }, [page]);
+
+  useEffect(() => {
+    fetchData().catch(Error);
+  }, [fetchData]);
+
+  const showMore = () => setPage(page + 1);
+
+  const onClick = (id) => () => {
+    setPopupData(images.find((image) => image.id === id));
+    setPopupOpen((prevPopup) => !prevPopup);
+  };
+
+  const onClose = () => setPopupOpen((prevPopup) => !prevPopup);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1 className="app-heading">Images gallery</h1>
+      <ImageList data={images} onClick={onClick} />
+      <Popup image={popupData} popupOpen={popupOpen} onClose={onClose} />
+      <button type="button" className="show-more-btn" onClick={showMore}>
+        Show more
+      </button>
     </div>
   );
-}
+};
 
 export default App;
